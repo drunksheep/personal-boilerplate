@@ -1,0 +1,36 @@
+// Fonts mixin
+font-url(file)
+  return '../fonts/' + file
+
+webfont(family, file, hack-chrome-windows = false, weight = 'normal')
+  @font-face
+    font-family family
+    src url(font-url(file + '.otf')) format('opentype')
+    src url(font-url(file + '.woff')) format('woff')
+    font-weight weight
+    font-style normal
+  if hack-chrome-windows
+    @media screen and (-webkit-min-device-pixel-ratio:0)
+      @font-face
+        font-family family
+        src url(font-url(file + '.svg#'+ family)) format('svg')
+        
+
+// How to use:
+// webfont('Open Sans', 'open-sans-webfont', true, 'normal')
+        
+
+transform(transforms)
+  -moz-transform transforms
+  -o-transform transforms
+  -ms-transform transforms
+  -webkit-transform transforms
+  transform transforms
+  
+
+transition(transitions)
+  -moz-transition transitions
+  -o-transition transitions
+  -ms-transition transitions
+  -webkit-transition transitions
+  transition transitions

@@ -1,0 +1,26 @@
+/* 
+Calculating Column Widths
+Before we can begin making calculations, we need to determine the maximum amount of columns per row. A popular choice is 12 as it boasts flexibility given that it is divisible by 1, 2, 3, 4, and 6. This permits a variety of different combinations that still allow for evenly distributed columns of the same size.
+
+It’s important to understand that by going with a maximum of 12 columns per row, you need to fulfill that amount for every row regardless of how many columns you want. For example, if you wanted only a row of 3 equal columns, you would use 3 elements that each span 4 columns (4×3=12). Exceeding the sum of 12 will result in the extra column(s) wrapping to a new line.
+
+Now that we know the maximum number of columns, next we need to determine the width of a single (1/12) column using the following formula:
+
+scw = (100 – (m * (mc – 1))) / mc
+
+Where:
+
+scw = single column width
+m = margin (1.6%)
+mc = maximum columns (12)
+When we plug in the numbers, we get a single column width of 6.86666666667%. From here we can use this number to calculate the rest of the column widths. The formula for this is:
+
+cw = (scw * cs) + (m * (cs – 1))
+
+Where:
+
+cw = column width
+scw = single column width (6.86666666667%)
+cs = column span (1-12)
+m = margin (1.6%)
+*/
