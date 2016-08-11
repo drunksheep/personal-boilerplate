@@ -17,7 +17,7 @@ webfont(family, file, hack-chrome-windows = false, weight = 'normal')
         
 
 // How to use:
-// webfont('Open Sans', 'open-sans-webfont', true, 'normal')
+// webfont('font-name', 'file-name', chrome-hack-boolean, 'weight')
         
 
 transform(transforms)
@@ -34,3 +34,13 @@ transition(transitions)
   -ms-transition transitions
   -webkit-transition transitions
   transition transitions
+  
+clip(c, f)
+  -webkit-background-clip c 
+  -webkit-text-fill-color f
+  -moz-background-clip c 
+  -moz-text-fill-color f 
+  -ms-background-clip c 
+  -ms-text-fill-color f 
+  -o-background-clip c 
+  -o-text-fill-color f 
