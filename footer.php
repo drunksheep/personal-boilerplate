@@ -1,8 +1,10 @@
-<footer role="footer">
+<footer>
 	
 </footer>
-<script src="https://use.fontawesome.com/6e0b02b849.js"></script>
-<script src="js/main.js" type="text/javascript"></script>
-<script src="js/vendors.common.js"></script>
+<?php 
+get_template_part('includes/components/overlay');
+get_template_part('includes/fallbacks/oldie'); 
+wp_footer();
+?>
 </body>
 </html> 

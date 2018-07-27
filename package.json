@@ -1,16 +1,27 @@
 {
-  "name": "",
+  "name": "personal-boilerplate",
   "version": "1.0.0",
-  "description": "",
-  "main": "\u001b[C",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "Branch para temas de Wordpress",
+  "author": "André Facchini",
+  "person": {
+    "name": "André Facchini",
+    "email": "andre3facchini@gmail.com",
+    "url": "https://twitter.com/@dokkodojs"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": "github:drunksheep/personal-boilerplate",
+  "license": "MIT",
+  "homepage": "www.github.com/drunksheep/personal-boilerplate",
   "dependencies": {
-    "gulp": "^3.9.1",
-    "gulp-group-css-media-queries": "^1.1.0",
-    "gulp-stylus": "^2.4.0"
+    "autoprefixer": "*",
+    "css-mqpacker": "*",
+    "cssnano": "*",
+    "gulp": "*",
+    "gulp-concat": "*",
+    "gulp-eslint": "*",
+    "gulp-postcss": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-stylus": "*",
+    "gulp-uglify": "*",
+    "pump": "*",
   }
 }

@@ -1,0 +1,100 @@
+.oldiewarning
+	position absolute
+	top 0
+	left 0 
+	right 0
+	margin auto
+	width 100% 
+	height 100% 
+	background-color #32363b
+	overflow hidden
+	z-index 1000
+	display none
+	
+	p, a 
+		width 100% 
+		margin auto 
+		text-align center
+		position absolute
+		top 500px 
+		color #fff
+		font-size 40px
+		font-family Tahoma, Geneva, sans-serif
+			
+
+.lt-ie9 
+	overflow hidden 
+	
+	.oldiewarning 
+		display block
+		
+div.wpcf7-mail-sent-ok
+	font-size 16px 
+	color #FFF 
+	padding 10px
+		
+div.wpcf7-validation-errors
+	color #FFF 
+	padding 10px
+	margin 10px
+	
+span.wpcf7-not-valid-tip
+	display inline-block
+	vertical-align top
+	margin 5px 0
+	font-size 14px
+	color #FFF !important 
+	border-bottom 1px solid $red
+	position relative
+	
+	&:before
+		content ''
+		display block
+		width 100% 
+		bottom -2px 
+		left 0
+		height 2px 
+		background-color $red
+		position absolute
+		
+div.wpcf7-mail-sent-ng, div.wpcf7-aborted
+	color #FFF 
+	font-size 16px
+	padding 10px
+	
+.wp-wrap
+	font-size 14px
+	color #FFF
+	font-weight 300
+	line-height 16px
+	
+	@media $tablet-max
+		padding-left 20px 
+		padding-right 20px
+	
+	p, ul, h1, h2, h3, h4, h5, h6
+		margin-bottom 20px
+	
+	p, ul, li 
+		color inherit 
+		font-weight inherit
+		line-height inherit
+		
+	h2 
+		font-size 28px 
+		font-family $p 
+		color $red
+		margin-bottom 30px 
+		font-family $p 
+		font-weight bold 
+
+	h3 
+		font-family $p 
+		font-size 20px 
+		color #FFF 
+		font-family $p 
+		font-weight bold
+		
+	ul 
+		list-style-type disc
+		padding-left 20px

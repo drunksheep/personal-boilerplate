@@ -1,15 +1,43 @@
 # personal-boilerplate
-Base components for work i do day-in-day.
+
+Based on [Gulp](http://gulpjs.com/) with [Stylus](http://stylus-lang.com/) and [postCSS](http://postcss.org/).
+Also uses [PHP](https://secure.php.net/) includes.
 
 
-This has a blank package.json for filling with basic information and setting your own Git repo. Also some npm modules i use for
-with Stylus and Gulp. There's a Media query combiner for nesting.
+**Features:**
 
-Header has OG tags, is already linked to the main.css that will be generated if you execute Gulp.
+ - Gulpfile ready to run
+ - CSS / JS Minifiers and concatenators
+ - IE Conditionals (IE9+) support
+ - Scripts for common web development issues (modals, carousels, smooth scrolling, etc) (Always a WIP)
+ - Predefined CSS bases for development (Check defaults.styl)
+ - @font-face mixin (check mixins.styl) 
 
-Also includes some common vendors that i use in most projects. Mainly Jquery, Parallax.js, Slick Carousel and HTMLshiv. 
+**How to use:**
 
-They are all in the same document for less calls and are already linked in the footer include, also there is a call for a main.js file on
-the scripts folder.
+    npm install
 
-Bye.
+Will install all dependencies, then:
+
+    gulp
+
+ To run the default function (Starts stylus, creates/minifies CSS and JS files, watches for changes). 
+
+You can also run specific functions: 
+
+    gulp stylus // Runs stylus
+    gulp css // Processes css on src folder 
+    gulp compress // Concatenates and minifies JS files
+    gulp-uglify-debug // accuses javascript errors more specifically
+
+Since the files are .php you need a web server to run them, i recommend [EasyPHP.](http://www.easyphp.org/)
+
+
+If you need help, contact me on [GitHub]('https://github.com/drunksheep')
+
+
+## Changelog ##
+
+**1.0**
+
+- First boilerplate version that has been made with wordpress in mind. pardon my french.

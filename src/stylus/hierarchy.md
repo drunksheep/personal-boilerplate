@@ -1,4 +1,4 @@
-sass/stylus 
+stylus 
 | 
 |– base/ 
 |   |– _reset      # Reset/normalize 

@@ -1,0 +1,16 @@
+// Fonts mixin
+font-url(file)
+  return '../fonts/' + file
+
+webfont(family, file, weight = 'normal')
+  @font-face
+    font-family family
+    src url(font-url(file + '.otf')) format('opentype')
+    src url(font-url(file + '.ttf')) format('truetype')
+    src url(font-url(file + '.woff')) format('woff')
+    font-weight weight
+    font-style normal
+    
+// How to use:
+// webfont('font-name', 'file-name', chrome-hack-boolean, 'weight')
+      
