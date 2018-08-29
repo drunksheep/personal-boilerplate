@@ -2,15 +2,20 @@
 font-url(file)
   return '../fonts/' + file
 
-webfont(family, file, weight = 'normal')
+webfont(family, file, weight, style = 'normal')
   @font-face
     font-family family
-    src url(font-url(file + '.otf')) format('opentype')
     src url(font-url(file + '.ttf')) format('truetype')
-    src url(font-url(file + '.woff')) format('woff')
     font-weight weight
-    font-style normal
+    font-style style
     
-// How to use:
-// webfont('font-name', 'file-name', chrome-hack-boolean, 'weight')
-      
+absoluteVertical()
+    position absolute
+    top 50%
+    transform translateY(-50%)
+
+absoluteCenter()
+    absoluteVertical()
+    left 0 
+    right 0 
+    margin auto 

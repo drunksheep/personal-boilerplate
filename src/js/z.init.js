@@ -1,44 +1,19 @@
-// init only, functions instantiated in previous .js files  
-// lettered prefix for auto-concat on alphabetical order (look for it in gulpfile.js) :)
+// window load binds 
 
+function init() {
 
-// load binds
-window.onload = function() {
-	$('body').addClass('loaded');
-	
-	$('.close-teacher').on('click', hideTeachers);
-	$('.teacher-info .square-hover-instance').on('click', showTeacher); 
-	
-	hideTeachers();
-	openModal('.open-modal, .open-modal-fixed, .get-in-contact, .schedule-now', '.modal-form');
-	closeModal('.close-modal', '.modal-form');
-	initMap();
-	$('.fancybox-instance').fancybox();
-	anchors();
+}
 
-	if (helpers.isMobile) {
-		helpers.carousel('.becomes-carousel-on-mobile', helpers.carouselOptions.mobileBasic);	
-		$('.hamburger').on('click', mobileMenu);
-		$('.has-submenu').on('click', openSubMenu);
-		$('.close-submenu').on('click', closeSubMenu);
-	}
+window.onload = init;
 
-	else {
-		scrollChanges();
-		window.onscroll = scrollChanges;
-	}
+function DOMLoaded() {
+    // these are not always necessary but sometimes they fuck with ya
+    if (helpers.iOS) {
+        document.querySelector('html').classList.add('ios');
+    } else if (helpers.IE()) {
+        document.querySelector('html').classList.add('ie');
+    }
 }
 
 // domcontent binds 
-
-document.addEventListener('DOMContentLoaded', function() {
-
-	if (helpers.iOS) {
-		$('html').addClass('ios');
-	}
-
-	if ( helpers.IE() ) {
-		$('html').addClass('ie');
-	}
-	
-});
+document.addEventListener('DOMContentLoaded', DOMLoaded);

@@ -4,14 +4,21 @@
 ####################
 
 if ( function_exists( 'add_theme_support' ) ) { 
-	add_theme_support( 'post-thumbnails' );
+    add_theme_support( 'post-thumbnails' );
+    add_image_size('page-highlight', 800, 450, true);
+    add_image_size('blog-thumbnail', 175, 135, true);
+    add_image_size('blog-page', 700, 250, true);
+    add_image_size('localization-image', 1140, 400, true);
+    add_image_size('localization-image-mobile', 600, 400, true);
+    add_image_size('service-home', 395, 270, true);
+    add_image_size('sidebar-thumb', 65, 65, true);
 }
 
 ## BASE STYLESHEET AND JS FILES ## 
 ##################################
 
 function registerScripts() {
-	// base concatenated app.js (contains all non-cdn vendors)
+	// base concatenated app.js (contains all non-cdn vendors, look at readme.md, gulpfile.js and src/js folders if you have any questions);
 	wp_register_script( 'app', get_bloginfo('template_url') . '/dist/app.js', '', null, false );
 	wp_enqueue_script('app');
 }
@@ -19,13 +26,19 @@ function registerScripts() {
 add_action( 'wp_enqueue_scripts', 'registerScripts' );
 
 function registerStyles() {
-	// base stylesheet
+    // font awesome 
+
+    wp_register_style( 'Font Awesome', 'https://use.fontawesome.com/releases/v5.2.0/css/all.css', '', null, 'all');
+    wp_enqueue_style('Font Awesome');
+
+
+    // base stylesheet (contains all non-cdn vendors, look at readme.md, gulpfile.js, src/main.css and src/stylus)
+    
 	wp_register_style( 'basic-stylesheet', get_bloginfo('template_url') . '/dist/main.css', '',  null, 'all' );
 	wp_enqueue_style( 'basic-stylesheet');
 }
 
 add_action( 'wp_enqueue_scripts', 'registerStyles' );
-
 
 ## GENERIC FUNCTIONS ## 
 #######################
@@ -89,22 +102,18 @@ function shuffle_assoc(&$array) {
 function hoistObject() {
 
 	// get post id
-	$id = get_queried_object()->ID;
+	// $id = get_queried_object()->ID;
 
 	// get meta 
-	$lat = get_post_meta($id, 'map_latitude', true);
-	$long = get_post_meta($id, 'map_longitude', true);
 	$url = get_bloginfo('template_url');
 
 	// create array
 	$hoist = json_encode(array(
-		'lat' => $lat, 
-		'long' => $long, 
 		'url' => $url,
 	));
 
-	if (!empty($lat) && !empty($long) ) {
-		wp_localize_script('app', 'coordinatesObject', $hoist);
+	if (!empty($hoist) ) {
+		wp_localize_script('app', 'Hoist', $hoist);
 	}
 
 }
@@ -116,40 +125,36 @@ add_action('wp_enqueue_scripts', 'hoistObject');
 ################
 
 function create_posttypes() {
-	// $profLabels = array(
-	// 	'name'               => _x( 'Professores', 'post type general name'),
-	// 	'singular_name'      => _x( 'Professor', 'post type singular name'),
-	// 	'menu_name'          => _x( 'Professores', 'admin menu'),
-	// 	'name_admin_bar'     => _x( 'Professor', 'add new on admin bar'),
-	// 	'add_new'            => _x( 'Adicionar novo', 'book'),
-	// 	'add_new_item'       => __( 'Adicionar novo professor'),
-	// 	'new_item'           => __( 'Novo Professor'),
-	// 	'edit_item'          => __( 'Editar Professor'),
-	// 	'view_item'          => __( 'Ver Professor'),
-	// 	'all_items'          => __( 'Todos Professors'),
-	// 	'search_items'       => __( 'Buscar Professores'),
+	// $procedureLabels = array(
+	// 	'name'               => _x( 'aplicações', 'post type general name'),
+	// 	'singular_name'      => _x( 'aplicação', 'post type singular name'),
+	// 	'menu_name'          => _x( 'aplicações', 'admin menu'),
+	// 	'name_admin_bar'     => _x( 'Adicionar aplicação', 'add new on admin bar'),
+	// 	'add_new'            => _x( 'Adicionar nova', ''),
+	// 	'add_new_item'       => __( 'Adicionar nova aplicação'),
+	// 	'new_item'           => __( 'nova aplicação'),
+	// 	'edit_item'          => __( 'Editar aplicação'),
+	// 	'view_item'          => __( 'Ver aplicações'),
+	// 	'all_items'          => __( 'Todos aplicações'),
+	// 	'search_items'       => __( 'Buscar aplicações'),
 	// 	'not_found'          => __( 'Nenhum item encontrado'),
 	// 	'not_found_in_trash' => __( 'Nenhum item encontrado na lixeira.')
 	// );
 
-	// register_post_type( 'professores',
+	// register_post_type( 'aplicações',
 	// 	array(
-	// 		'labels' => $profLabels,
+	// 		'labels' => $procedureLabels,
 	// 		'public' => true,
-	// 		'rewrite' => array(
-	// 			'slug' => 'professores',
-	// 			'with_front'  => false,
-	// 		),
-	// 		'supports' => array('title', 'editor', 'thumbnail'),
+	// 		'supports' => array('title', 'editor'),
 	// 	)
 	// );
 }
 
-add_action( 'init', 'create_posttypes' );
+// add_action( 'init', 'create_posttypes' );
 
 
 ## GENERAL CHANGES TO WP "CORE" ## 
-#################################
+##################################
 
 // Add copyright to wp-admin footer
 
@@ -181,4 +186,4 @@ add_action( 'wp_enqueue_scripts', 'deregister_scripts' );
 
 // remove autop from CF7 (5.0 +)
 
-// add_filter( 'wpcf7_autop_or_not', '__return_false' );
+add_filter( 'wpcf7_autop_or_not', '__return_false' );

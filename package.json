@@ -1,6 +1,6 @@
 {
   "name": "personal-boilerplate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Branch para temas de Wordpress",
   "author": "André Facchini",
   "person": {
@@ -15,13 +15,13 @@
     "autoprefixer": "*",
     "css-mqpacker": "*",
     "cssnano": "*",
-    "gulp": "*",
+    "gulp": "^4.0.0",
     "gulp-concat": "*",
     "gulp-eslint": "*",
     "gulp-postcss": "*",
     "gulp-sourcemaps": "*",
     "gulp-stylus": "*",
     "gulp-uglify": "*",
-    "pump": "*",
+    "pump": "*"
   }
 }
