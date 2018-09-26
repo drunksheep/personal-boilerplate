@@ -190,6 +190,21 @@ button {
 .lt-ie9 .oldiewarning {
   display: block;
 }
+.t-white {
+  color: #fff;
+}
+.t-blue {
+  color: $blue;
+}
+.t-purple {
+  color: $purple;
+}
+.t-gray {
+  color: $lightGray;
+}
+.t-darkBlue {
+  color: $darkBlue;
+}
 .t-xxs {
   font-size: 10px;
 }
@@ -223,18 +238,29 @@ button {
 .t-exxg {
   font-size: 40px;
 }
-.lh-g {
+.lh-xs {
+  line-height: 14px;
+}
+.lh-s {
+  line-height: 16px;
+}
+.lh-r {
   line-height: 18px;
 }
-@media screen and (max-width: 997px) {
-  .hiline {
-    line-height: 20px;
-  }
+.lh-g {
+  line-height: 20px;
 }
-@media screen and (min-width: 997px) {
-  .hiline {
-    line-height: 26px;
-  }
+.lh-xg {
+  line-height: 22px;
+}
+.lh-xxg {
+  line-height: 24px;
+}
+.hiline {
+  line-height: 26px;
+}
+.hiline-extra {
+  line-height: 44px;
 }
 .margin-xxxs {
   margin-bottom: 10px;
@@ -271,12 +297,22 @@ button {
   margin-left: auto;
   margin-right: auto;
 }
+.upper {
+  text-transform: uppercase;
+}
 .med {
   font-weight: 500;
 }
 .sb {
   font-weight: 600;
 }
+.bold {
+  font-weight: 700;
+}
+a.und,
 .und {
   text-decoration: underline !important;
+}
+.ita {
+  font-style: italic;
 }

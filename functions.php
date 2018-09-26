@@ -5,13 +5,7 @@
 
 if ( function_exists( 'add_theme_support' ) ) { 
     add_theme_support( 'post-thumbnails' );
-    add_image_size('page-highlight', 800, 450, true);
-    add_image_size('blog-thumbnail', 175, 135, true);
-    add_image_size('blog-page', 700, 250, true);
-    add_image_size('localization-image', 1140, 400, true);
-    add_image_size('localization-image-mobile', 600, 400, true);
-    add_image_size('service-home', 395, 270, true);
-    add_image_size('sidebar-thumb', 65, 65, true);
+    // add_image_size('example', 800, 450, true);
 }
 
 ## BASE STYLESHEET AND JS FILES ## 
@@ -26,14 +20,7 @@ function registerScripts() {
 add_action( 'wp_enqueue_scripts', 'registerScripts' );
 
 function registerStyles() {
-    // font awesome 
-
-    wp_register_style( 'Font Awesome', 'https://use.fontawesome.com/releases/v5.2.0/css/all.css', '', null, 'all');
-    wp_enqueue_style('Font Awesome');
-
-
     // base stylesheet (contains all non-cdn vendors, look at readme.md, gulpfile.js, src/main.css and src/stylus)
-    
 	wp_register_style( 'basic-stylesheet', get_bloginfo('template_url') . '/dist/main.css', '',  null, 'all' );
 	wp_enqueue_style( 'basic-stylesheet');
 }
@@ -43,7 +30,7 @@ add_action( 'wp_enqueue_scripts', 'registerStyles' );
 ## GENERIC FUNCTIONS ## 
 #######################
 
-// get pages by template used for loops 
+// get pages by template name
 
 function get_pages_by_template( $template = '', $args = array() ) {
 	if ( empty( $template ) ) return false;
@@ -53,6 +40,8 @@ function get_pages_by_template( $template = '', $args = array() ) {
 	return get_pages($args);
 }
 
+// list on menus
+
 function menuListing($instance) {
 	$list = get_pages_by_template($instance); 
 
@@ -60,13 +49,15 @@ function menuListing($instance) {
 		$ID = $item->ID; 
 		$title = $item->post_title;
 		$permalink = get_permalink($ID, false);
-
+        
+        // change this to your preferred html
 		echo "<li><a href=\"$permalink\" title=\"$title\">$title</a></li>";
 	}
 
 }
 
 // generic excerpt function
+// $instance being WHAT you want to excerpt (ex: get_the_content())
 
 function excerpt($limit, $instance) {
 	$excerpt = explode(' ', $instance, $limit);
@@ -98,7 +89,8 @@ function shuffle_assoc(&$array) {
 	return true;
 }
 
-// send object to JS via wp_localize_script
+// send object to app.js via wp_localize_script
+// look at src/js/x.helpers.js to find the JS handling
 function hoistObject() {
 
 	// get post id
@@ -168,7 +160,6 @@ function change_footer_admin() {
 add_filter('admin_footer_text', 'change_footer_admin');
 
 // remove welcome panel
-
 remove_action('welcome_panel', 'wp_welcome_panel');
 
 // de-register useless wp scripts
@@ -177,6 +168,8 @@ function deregister_scripts() {
 	wp_deregister_script( 'wp-embed' );
 
 	if ( !is_admin() ) {
+
+        // i do this because i generally concatenate jquery into my app.js
 		wp_dequeue_script( 'jquery' );
 		wp_deregister_script( 'jquery' );
 	}
@@ -184,6 +177,6 @@ function deregister_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'deregister_scripts' );
 
-// remove autop from CF7 (5.0 +)
+// remove autop from CF7 (5.0 +) 
 
-add_filter( 'wpcf7_autop_or_not', '__return_false' );
+// add_filter( 'wpcf7_autop_or_not', '__return_false' );

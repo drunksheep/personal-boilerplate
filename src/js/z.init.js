@@ -1,9 +1,9 @@
-// window load binds 
 
 function init() {
-
+    
 }
 
+// window load binds 
 window.onload = init;
 
 function DOMLoaded() {
