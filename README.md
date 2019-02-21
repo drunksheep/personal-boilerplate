@@ -3,19 +3,25 @@
 Based on  [Gulp](http://gulpjs.com/) with [Stylus](http://stylus-lang.com/) and [postCSS](http://postcss.org/).
 Also uses [PHP](https://secure.php.net/) includes.
 
+This version is made for [Wordpress]('https://wordpress.org') Theme Development.
+
+So you should put this inside your themes folder, as it's own theme. and start from there.
+
 
 **Features:**
 
- - Gulpfile ready to run
  - CSS / JS Minifiers and concatenators
- - IE Conditionals (IE9+) support
+ - No more support for IE, only 11. 
  - Scripts for common web development issues (modals, carousels, smooth scrolling, etc) (Always a WIP)
  - Predefined CSS bases for development (Check defaults.styl)
- - @font-face mixin (check mixins.styl) 
+ - Ready to use mixins (check mixins.styl)
+ - CSS snippets to help development
+ - Useful functions explained and ready to use in functions.php
+ - Javascript utilities on helpers.js file
 
 **How to use:**
 
-    npm install
+    npm i
 
 Will install all dependencies, then:
 
@@ -30,8 +36,7 @@ You can also run specific functions:
     gulp compress // Concatenates and minifies JS files
     gulp-uglify-debug // accuses javascript errors more specifically
 
-Since the files are .php you need a web server to run them, i recommend [EasyPHP.](http://www.easyphp.org/)
-
+Since the files are .php you need a web server to run them, i recommend [XAMPP.](https://www.apachefriends.org/pt_br/index.html)
 
 If you need help, contact me on [GitHub]('https://github.com/drunksheep')
 
@@ -58,5 +63,10 @@ If you need help, contact me on [GitHub]('https://github.com/drunksheep')
 - ACTUALLY Fixed some bugs with folder structure creating 2 "main" files.
 - Cleaned everything up a bit
 
+**1.5** 
+
+- Focusing on wordpress branch for now.
+- Cleaned up functions.php, extra dumb files i forgot on src/stylus folders
+- added some new JS, CSS and PHP snippets. 
 
 

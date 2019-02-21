@@ -1,7 +1,7 @@
 {
   "name": "personal-boilerplate",
-  "version": "1.0.1",
-  "description": "Branch para temas de Wordpress",
+  "version": "1.5",
+  "description": "Wordpress development boilerplate with stylus and postCSS",
   "author": "André Facchini",
   "person": {
     "name": "André Facchini",
@@ -10,7 +10,7 @@
   },
   "repository": "github:drunksheep/personal-boilerplate",
   "license": "MIT",
-  "homepage": "www.github.com/drunksheep/personal-boilerplate",
+  "homepage": "https://github.com/drunksheep/personal-boilerplate/tree/wordpress",
   "dependencies": {
     "autoprefixer": "*",
     "css-mqpacker": "*",
