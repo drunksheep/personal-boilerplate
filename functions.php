@@ -4,7 +4,7 @@
 ####################
 
 if ( function_exists( 'add_theme_support' ) ) { 
-    add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'post-thumbnails' );
     // add_image_size('example', 800, 450, true);
 }
 
@@ -30,32 +30,6 @@ add_action( 'wp_enqueue_scripts', 'registerStyles' );
 ## GENERIC FUNCTIONS ## 
 #######################
 
-// get pages by template name
-
-function get_pages_by_template( $template = '', $args = array() ) {
-	if ( empty( $template ) ) return false;
-	if ( strpos( $template, '.php' ) !== ( strlen( $template ) - 4) )  $template .= '.php';
-	$args['meta_key'] = '_wp_page_template';
-	$args['meta_value'] = $template;
-	return get_pages($args);
-}
-
-// list on menus
-
-function menuListing($instance) {
-	$list = get_pages_by_template($instance); 
-
-	foreach ($list as $item ) {
-		$ID = $item->ID; 
-		$title = $item->post_title;
-		$permalink = get_permalink($ID, false);
-        
-        // change this to your preferred html
-		echo "<li><a href=\"$permalink\" title=\"$title\">$title</a></li>";
-	}
-
-}
-
 // generic excerpt function
 // $instance being WHAT you want to excerpt (ex: get_the_content())
 
@@ -72,36 +46,21 @@ function excerpt($limit, $instance) {
 	return $excerpt;
 }
 
-// shuffle array with association
-// http://php.net/manual/pt_BR/function.shuffle.php#94697 
-
-function shuffle_assoc(&$array) {
-	$keys = array_keys($array);
-
-	shuffle($keys);
-
-	foreach($keys as $key) {
-		$new[$key] = $array[$key];
-	}
-
-	$array = $new;
-
-	return true;
-}
 
 // send object to app.js via wp_localize_script
 // look at src/js/x.helpers.js to find the JS handling
 function hoistObject() {
 
-	// get post id
-	// $id = get_queried_object()->ID;
-
-	// get meta 
+	// URLS
 	$url = get_bloginfo('template_url');
+	$adminURL = admin_url('admin-ajax.php');
+	$homeURL = home_url('/');
 
 	// create array
 	$hoist = json_encode(array(
 		'url' => $url,
+		'adminURL' => $adminURL,
+		'homeURL' => $homeURL,
 	));
 
 	if (!empty($hoist) ) {
@@ -116,7 +75,7 @@ add_action('wp_enqueue_scripts', 'hoistObject');
 ## POST TYPES ## 
 ################
 
-function create_posttypes() {
+// function create_posttypes() {
 	// $procedureLabels = array(
 	// 	'name'               => _x( 'aplicações', 'post type general name'),
 	// 	'singular_name'      => _x( 'aplicação', 'post type singular name'),
@@ -140,9 +99,45 @@ function create_posttypes() {
 	// 		'supports' => array('title', 'editor'),
 	// 	)
 	// );
-}
+// }
 
 // add_action( 'init', 'create_posttypes' );
+
+## TAXONOMIES ## 
+################
+
+// function registerTaxonomies() {
+
+//     // serviços
+// 	$servicos = array(
+// 		'name' => _x('Tipos de Serviço', 'taxonomy general name'),
+// 		'singular_name' => _x('Serviço', 'taxonomy singular name'),
+// 		'search_items' => __('Procurar Serviço'),
+// 		'all_items' => __('Todos os Serviços'),
+// 		'parent_item' => __('Serviço Pai'),
+// 		'parent_item_colon' => __('Serviço Pai:'),
+// 		'edit_item' => __('Editar Serviço'),
+// 		'update_item' => __('Atualizar Serviço'),
+// 		'add_new_item' => __('Adicionar novo Serviço'),
+// 		'new_item_name' => __('Nome da novo Serviço'),
+// 		'menu_name' => __('Serviços'),
+// 	);
+
+// 	$servArgs = array(
+// 		'labels' => $servicos,
+// 		'hierarchical' => true,
+// 		'public' => true,
+// 		'show_ui' => true,
+// 		'show_in_menu' => true,
+// 		'show_admin_column' => true,
+// 		'query_var' => true,
+// 		'rewrite' => array('slug' => 'servicos', 'with_front' => false),
+// 	);
+
+// 	register_taxonomy('servicos', 'page', $servArgs);
+// }
+
+// add_action('init', 'registerTaxonomies');
 
 
 ## GENERAL CHANGES TO WP "CORE" ## 
@@ -179,4 +174,63 @@ add_action( 'wp_enqueue_scripts', 'deregister_scripts' );
 
 // remove autop from CF7 (5.0 +) 
 
-// add_filter( 'wpcf7_autop_or_not', '__return_false' );
+add_filter( 'wpcf7_autop_or_not', '__return_false' );
+
+
+// remove margin top from admin bar
+
+function remove_admin_login_header()
+{
+	remove_action('wp_head', '_admin_bar_bump_cb');
+}
+
+add_action('init', 'remove_admin_login_header');
+
+/**
+ * Disable the emoji's
+*/
+
+function disable_emojis() {
+
+	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+	remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+	remove_action( 'wp_print_styles', 'print_emoji_styles' );
+	remove_action( 'admin_print_styles', 'print_emoji_styles' );	
+	remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+	remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );	
+	remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+	add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
+
+}
+add_action( 'init', 'disable_emojis' );
+
+/**
+ * Filter function used to remove the tinymce emoji plugin.
+ * 
+ * @param    array  $plugins  
+ * @return   array             Difference betwen the two arrays
+ */
+
+function disable_emojis_tinymce( $plugins ) {
+	if ( is_array( $plugins ) ) {
+		return array_diff( $plugins, array( 'wpemoji' ) );
+	} else {
+		return array();
+	}
+}
+
+// disable the admin bar
+add_filter('show_admin_bar', '__return_false');
+show_admin_bar(false);
+
+function hideAdminBar() { ?>
+	<style type="text/css">.show-admin-bar { display: none; }</style>
+<?php }
+add_action('admin_print_scripts-profile.php', 'hideAdminBar');
+
+
+//Disable gutenberg style in Front
+function wps_deregister_styles() {
+	wp_dequeue_style( 'wp-block-library' );
+}
+add_action( 'wp_print_styles', 'wps_deregister_styles', 100 );

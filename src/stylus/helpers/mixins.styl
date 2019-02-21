@@ -2,12 +2,13 @@
 font-url(file)
   return '../fonts/' + file
 
-webfont(family, file, weight, style = 'normal')
+webfont(family, file, weight, style = 'normal', display = 'auto')
   @font-face
     font-family family
     src url(font-url(file + '.ttf')) format('truetype')
     font-weight weight
     font-style style
+    font-display display
     
 absoluteVertical()
     position absolute

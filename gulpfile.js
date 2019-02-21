@@ -20,13 +20,10 @@ gulp.task('stylus', function () {
 gulp.task('css', function () {
     var processors = [
         prefixes({
-            browsers: ['last 4 versions']
+            browsers: ['last 3 versions']
         }),
         packer(),
-        cssnano({
-            zindex: false,
-            reduceIdents: false
-        }),
+        cssnano({zindex: false,reduceIdents: false}),
     ];
     return gulp.src('src/*.css')
         .pipe(sourcemaps.init())
@@ -55,7 +52,7 @@ gulp.task('uglify-debug', function (cb) {
 gulp.task('watch', function (done) {
     gulp.watch('src/stylus/**/*.styl', gulp.series('stylus', 'css'));
     gulp.watch('src/js/**/*.js', gulp.series('compress'));
-    done();
+    done;
 });
 
 gulp.task('default', gulp.series('stylus', 'css', 'compress', 'watch'));

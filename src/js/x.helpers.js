@@ -1,9 +1,9 @@
 window.helpers = {
     lockBody: function () {
-        document.querySelector('body').classList.add('no-scroll');
+        document.querySelector('html').classList.add('no-scroll');
     },
     unlockBody: function () {
-        document.querySelector('body').classList.remove('no-scroll');
+        document.querySelector('html').classList.remove('no-scroll');
     },
 
     isMobile: window.innerWidth < 1023 ? true : false,
@@ -23,10 +23,10 @@ window.helpers = {
 
     },
 
-    // hoisted: JSON.parse(window.Hoist),
+    hoisted: JSON.parse(window.Hoist),
 
     photoshopLetterSpacingToPx: function (val, size) {
-        val * size / 1000;
-        return;
+        var res = val * size / 1000;
+        return res;
     },
 }

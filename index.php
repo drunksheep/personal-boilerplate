@@ -1,4 +1,4 @@
 <?php get_header(); ?>
-<main>
+<main class="structure">
 </main>
 <?php get_footer(); ?>
