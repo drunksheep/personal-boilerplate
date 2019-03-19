@@ -1,6 +1,6 @@
 {
   "name": "personal-boilerplate",
-  "version": "1.5",
+  "version": "1.5.0",
   "description": "Wordpress development boilerplate with stylus and postCSS",
   "author": "André Facchini",
   "person": {
@@ -11,5 +11,17 @@
   "repository": "github:drunksheep/personal-boilerplate",
   "license": "MIT",
   "homepage": "https://github.com/drunksheep/personal-boilerplate/tree/wordpress",
-  "dependencies": {}
+  "dependencies": {
+    "autoprefixer": "*",
+    "css-mqpacker": "*",
+    "cssnano": "*",
+    "gulp": "^4.0.0",
+    "gulp-concat": "*",
+    "gulp-eslint": "*",
+    "gulp-postcss": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-stylus": "*",
+    "gulp-uglify": "*",
+    "pump": "*",
+  }
 }
