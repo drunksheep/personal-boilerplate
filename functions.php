@@ -72,6 +72,24 @@ function hoistObject() {
 add_action('wp_enqueue_scripts', 'hoistObject');
 
 
+// Wrap object in <pre> tags for easily viewing what you are receiving from a query 
+
+function wrapInPre($obj, $death = false, $color = 'black') {
+
+	if (empty($obj)) {
+		return false;
+	}
+
+	echo '<pre style="font-size: 22px; color: '.$color.';">';
+	print_r($obj); 
+	echo '</pre>';
+
+	if ($death) {
+		die;
+	}
+}
+
+
 ## POST TYPES ## 
 ################
 
@@ -172,6 +190,13 @@ function deregister_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'deregister_scripts' );
 
+// remove wrapping span elements on cf7 fields
+add_filter('wpcf7_form_elements', function($content) {
+	$content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control-wrap(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
+
+	return $content;
+});
+
 // remove autop from CF7 (5.0 +) 
 
 add_filter( 'wpcf7_autop_or_not', '__return_false' );
@@ -229,8 +254,10 @@ function hideAdminBar() { ?>
 add_action('admin_print_scripts-profile.php', 'hideAdminBar');
 
 
-//Disable gutenberg style in Front
+// remove cf7 and gutenberg styles
+add_action( 'wp_print_styles', 'wps_deregister_styles', 100 );
+
 function wps_deregister_styles() {
+	wp_deregister_style( 'contact-form-7' );
 	wp_dequeue_style( 'wp-block-library' );
 }
-add_action( 'wp_print_styles', 'wps_deregister_styles', 100 );

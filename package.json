@@ -11,17 +11,5 @@
   "repository": "github:drunksheep/personal-boilerplate",
   "license": "MIT",
   "homepage": "https://github.com/drunksheep/personal-boilerplate/tree/wordpress",
-  "dependencies": {
-    "autoprefixer": "*",
-    "css-mqpacker": "*",
-    "cssnano": "*",
-    "gulp": "^4.0.0",
-    "gulp-concat": "*",
-    "gulp-eslint": "*",
-    "gulp-postcss": "*",
-    "gulp-sourcemaps": "*",
-    "gulp-stylus": "*",
-    "gulp-uglify": "*",
-    "pump": "*"
-  }
+  "dependencies": {}
 }
