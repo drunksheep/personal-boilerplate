@@ -102,6 +102,7 @@ section {
 body {
   line-height: 1;
   overflow-x: hidden;
+  font-family: $u;
 }
 body,
 html {
@@ -133,9 +134,7 @@ table {
 * {
   box-sizing: border-box;
 }
-*:before {
-  box-sizing: border-box;
-}
+*:before,
 *:after {
   box-sizing: border-box;
 }
@@ -148,15 +147,21 @@ strong {
   font-weight: 700;
 }
 a {
-  text-decoration: none !important;
+  text-decoration: none;
+  color: inherit;
 }
 a:link,
 a:visited,
 a:active {
-  text-decoration: none !important;
+  text-decoration: none;
 }
 img {
   max-width: 100%;
+}
+@media screen and (max-width: 997px) {
+  img {
+    object-fit: cover;
+  }
 }
 button {
   cursor: pointer;
@@ -166,6 +171,19 @@ select,
 textarea {
   padding: 5px 10px;
   font-family: inherit;
+  resize: none;
+}
+pre {
+  font-size: 16px;
+  display: block;
+  text-align: left;
+  background: #fafafa;
+  border: 2px solid #e1e1e1;
+  border-radius: 5px;
+  padding: 20px;
+  line-height: 28px;
+  font-family: monospace;
+  overflow: scroll;
 }
 .oldiewarning {
   position: absolute;

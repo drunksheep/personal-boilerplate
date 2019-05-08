@@ -3,20 +3,20 @@ font-url(file)
   return '../fonts/' + file
 
 webfont(family, file, weight, style = 'normal', display = 'auto')
-  @font-face
-    font-family family
-    src url(font-url(file + '.ttf')) format('truetype')
-    font-weight weight
-    font-style style
-    font-display display
-    
+	@font-face
+		font-family family
+		src url(font-url(file + '.ttf')) format('truetype')
+		font-weight weight
+		font-style style
+		font-display display
+	
 absoluteVertical()
-    position absolute
-    top 50%
-    transform translateY(-50%)
+	position absolute
+	top 50%
+	transform translateY(-50%)
 
 absoluteCenter()
-    absoluteVertical()
-    left 0 
-    right 0 
-    margin auto 
+	absoluteVertical()
+	left 0 
+	right 0 
+	margin auto

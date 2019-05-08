@@ -22,6 +22,6 @@
     "gulp-sourcemaps": "*",
     "gulp-stylus": "*",
     "gulp-uglify": "*",
-    "pump": "*",
+    "pump": "*"
   }
 }
