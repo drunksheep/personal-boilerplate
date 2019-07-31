@@ -8,7 +8,8 @@ Also uses [PHP](https://secure.php.net/) includes.
 
  - CSS / JS Minifiers and concatenators.
  - CSS Reset, pre-processor hierarchy guide, some useful classes (repeatables.styl), (WIP). 
- - 
+ - Babel to transpile ES6. 
+ - A easy to use structure for postcss modules.
 
 **How to use:**
 
