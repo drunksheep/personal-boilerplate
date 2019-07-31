@@ -1,0 +1,33 @@
+// Fonts mixin
+font-url(file)
+  return '../fonts/' + file
+
+webfont(family, file, weight, style = 'normal', display = 'auto')
+	@font-face
+		font-family family
+		src url(font-url(file + '.ttf')) format('truetype')
+		font-weight weight
+		font-style style
+		font-display display
+	
+absoluteVertical()
+	position absolute
+	top 50%
+	transform translateY(-50%)
+
+absoluteCenter()
+	absoluteVertical()
+	left 0 
+	right 0 
+	margin auto
+
+AbsfillContainer()
+	position absolute
+	width 100% 
+	height 100% 
+	left 0 
+	top 0
+
+
+toPercentage($val, $containerContext = $context)
+	return round(percentage($val / $containerContext), 2) + '%'

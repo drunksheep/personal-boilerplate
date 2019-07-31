@@ -1,0 +1,60 @@
+// # Container Handling #
+// ######################
+
+// this is the container size when the resolution is smaller than $context
+
+$smallerContext = 1000
+$smallerContextPX = 1000px
+
+// this is the container width on which the mixin toPercentage will be based, if no second param is passed
+$context = 1240
+$contextPX = 1240px
+
+// a bigger version of the container
+$biggerContext = 1500
+$biggerContextPX = 1500px
+
+
+// # fonts # 
+// #########
+
+
+// # colors #
+// ##########	
+
+
+
+// ## BREAKPOINTS ##
+// #################
+// sc === screen    
+
+xxl-sc = 1700px 
+xl-sc = 1500px 
+sc = xl-sc - 1  
+s-sc = 997px 
+xs-sc = 600px 
+xxs-sc = xs-sc - 1 
+
+// MAX 
+$mobile-max = 'screen and (max-width xxs-sc)'
+$tablet-max = 'screen and (max-width s-sc)'
+$small-desktop-max = 'screen and (max-width sc)'
+
+// MIN 
+$tablet-min = 'screen and (min-width xs-sc)'
+$small-desktop-min = 'screen and (min-width s-sc)'
+$desktop-min = 'screen and (min-width 1279px)'
+$xl-desktop-min = 'screen and (min-width xl-sc)'
+$xxl-desktop-min = 'screen and (min-width xxl-sc)'
+
+//MINMAX 
+$tablet-minmax = 'screen and (min-width xs-sc) and (max-width s-sc)'
+$small-desktop-minmax = 'screen and (min-width s-sc) and (max-width xl-sc)'
+$smallest-desktop-minmax = 'screen and (min-width 998px) and (max-width 1279px)'
+$desktop-minmax = 'screen and (min-width 1279px) and (max-width 1400px)'
+
+
+
+
+
+

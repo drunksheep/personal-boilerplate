@@ -1,0 +1,28 @@
+{
+  "name": "personal-boilerplate",
+  "version": "1.5.0",
+  "description": "Babel, Stylus and PostCSS made simple.",
+  "author": "André Facchini",
+  "person": {
+    "name": "André Facchini",
+    "email": "andre3facchini@gmail.com",
+    "url": "https://twitter.com/@dokkodojs"
+  },
+  "repository": "github:drunksheep/personal-boilerplate",
+  "license": "MIT",
+  "homepage": "https://github.com/drunksheep/personal-boilerplate/",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "autoprefixer": "*",
+    "css-mqpacker": "*",
+    "cssnano": "*",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-postcss": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-stylus": "*",
+    "gulp-terser": "^1.2.0"
+  }
+}
