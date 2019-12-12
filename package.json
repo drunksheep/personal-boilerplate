@@ -1,6 +1,6 @@
 {
   "name": "personal-boilerplate",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Babel, Stylus and PostCSS made simple.",
   "author": "André Facchini",
   "person": {
@@ -13,9 +13,8 @@
   "homepage": "https://github.com/drunksheep/personal-boilerplate/",
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "autoprefixer": "*",
-    "css-mqpacker": "*",
+    "@babel/core": "^7.7.5",
+    "autoprefixer": "^9.7.3",
     "cssnano": "*",
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0",

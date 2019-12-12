@@ -4,27 +4,23 @@ const gulp = require('gulp'),
     stylus = require('gulp-stylus'),
     postcss = require('gulp-postcss'),
     sourcemaps = require('gulp-sourcemaps'),
-    packer = require('css-mqpacker'),
     prefixes = require('autoprefixer'),
     cssnano = require('cssnano'),
     concat = require('gulp-concat'),
-    babel = require('gulp-babel'), 
+    babel = require('gulp-babel'),
     terser = require('gulp-terser');
 
 const config = {
     js : {
         src: 'src/js/*.js',
-    }, 
+    },
     css : {
         src: 'src/stylus/main.styl',
         watch: 'src/stylus/**/*.styl',
     },
-    dist: 'dist', 
+    dist: 'dist',
     postCSSModules : [
-        prefixes({
-            browsers: ['last 3 versions']
-        }),
-        packer(),
+        prefixes(),
         cssnano({ zindex: false, reduceIdents: false }),
     ]
 };
@@ -38,7 +34,7 @@ gulp.task('js', () => {
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(config.dist))
 });
-    
+
 gulp.task('css', () => {
     return gulp.src('src/stylus/main.styl')
         .pipe(stylus())
