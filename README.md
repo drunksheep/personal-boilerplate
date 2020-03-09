@@ -65,3 +65,8 @@ If you need help, contact me on [GitHub]('https://github.com/drunksheep')
 - Removed cssmqpacker module
 - Updated dependency versions and fixed some conflicts
 - Added some stuff that makes life easier on the .styl files
+
+**1.7**
+- Added extra helper methods on helpers.x.js
+- Added preset to babel in gulpfile
+- updated dependencies
