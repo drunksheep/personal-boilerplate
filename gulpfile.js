@@ -28,7 +28,9 @@ const config = {
 gulp.task('js', () => {
     return gulp.src(config.js.src)
     .pipe(sourcemaps.init())
-    .pipe(babel())
+    .pipe(babel({
+        presets : ['@babel/preset-env']
+    }))
     .pipe(concat('app.js'))
     .pipe(terser())
     .pipe(sourcemaps.write('.'))
